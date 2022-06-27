@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+
+  # rev-proxy:
+  #   build:
+  #     context: ./nginx
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   depends_on:
+  #     - logviewer-front
+  #   restart: always
+
+  logviewer-front:
+    container_name: logviewer-front
+    build:
+      context: ./logviewer-front
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    networks:
+      - logviewer_network
+
+  logviewer_api:
+    container_name: logviewer_api
+    build:
+      context : .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgresql:
+        condition: service_healthy
+    links:
+      - postgresql
+    networks:
+      - logviewer_network
+    environment:
+      - spring_datasource_url=jdbc:postgresql://postgresql:5432/postgres
+      - spring_datasource_username=postgres
+      - spring_datasource_password=password
+
+  postgresql:
+    hostname: postgresql
+    container_name: postgresql
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - logviewer_network
+
+networks:
+ logviewer_network:
+  external:
+   name: logviewer_network
