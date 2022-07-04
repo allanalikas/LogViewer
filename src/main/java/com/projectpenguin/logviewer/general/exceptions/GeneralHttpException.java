@@ -23,7 +23,8 @@ public class GeneralHttpException extends Exception {
     }
 
     public ResponseEntity createErrorResponse() {
-        GeneralResponse response = new GeneralResponse();
+        GeneralResponse response = new GeneralResponse(ErrorCode.SYSTEM, "Error");
+        return ResponseEntity.ok().body(response);
     }
 
 }
