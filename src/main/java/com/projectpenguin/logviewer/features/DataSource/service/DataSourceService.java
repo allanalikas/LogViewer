@@ -1,12 +1,12 @@
-package com.projectpenguin.logviewer.DataSource.service;
+package com.projectpenguin.logviewer.features.DataSource.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.projectpenguin.logviewer.DataSource.model.DataSource;
-import com.projectpenguin.logviewer.DataSource.repository.DataSourceRepository;
+import com.projectpenguin.logviewer.features.DataSource.model.DataSource;
+import com.projectpenguin.logviewer.features.DataSource.repository.DataSourceRepository;
 
 @Service
 public class DataSourceService {

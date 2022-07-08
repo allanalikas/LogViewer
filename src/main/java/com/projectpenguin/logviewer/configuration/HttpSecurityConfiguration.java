@@ -13,22 +13,21 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 public class HttpSecurityConfiguration {
-    
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .cors().and()
-            .csrf().disable()
-            .authorizeHttpRequests((authz) -> authz
-                .antMatchers("/api/**").authenticated()
-                .antMatchers("/api/login").permitAll()
-            )
-            .logout()
+                .cors().and()
+                .csrf().disable()
+                .authorizeHttpRequests((authz) -> authz
+                        .antMatchers("/api/**").authenticated()
+                        .antMatchers("/api/login").permitAll())
+                .logout()
                 .logoutUrl("/api/logout")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
-            .and()
-            .formLogin()
+                .and()
+                .formLogin()
                 .loginPage("/login").permitAll()
                 .loginProcessingUrl("/api/login")
                 .usernameParameter("username")
@@ -39,17 +38,17 @@ public class HttpSecurityConfiguration {
     }
 
     @Bean
-    public AuthenticationSuccessHandler authenticationSuccessHandler(){
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
         return new CustomAuthenticationSuccessHandler();
     }
 
-	@Bean
-	CorsConfigurationSource corsConfigurationSource() {
-		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("https://localhost"));
-		configuration.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS", "PUT", "PATCH", "DELETE"));
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", configuration);
-		return source;
-	}
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("https://localhost"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "PUT", "PATCH", "DELETE"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 }

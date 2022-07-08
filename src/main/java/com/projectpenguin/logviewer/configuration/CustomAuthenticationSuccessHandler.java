@@ -31,14 +31,16 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     // API
 
     @Override
-    public void onAuthenticationSuccess(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication) throws IOException {
+    public void onAuthenticationSuccess(final HttpServletRequest request, final HttpServletResponse response,
+            final Authentication authentication) throws IOException {
         handle(request, response, authentication);
         clearAuthenticationAttributes(request);
     }
 
     // IMPL
 
-    protected void handle(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication) throws IOException {
+    protected void handle(final HttpServletRequest request, final HttpServletResponse response,
+            final Authentication authentication) throws IOException {
         final String targetUrl = determineTargetUrl(authentication);
 
         if (response.isCommitted()) {
@@ -50,12 +52,13 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     }
 
     protected String determineTargetUrl(final Authentication authentication) {
-        //TODO
+        // TODO
         return "https://localhost";
     }
 
     /**
-     * Removes temporary authentication-related data which may have been stored in the session
+     * Removes temporary authentication-related data which may have been stored in
+     * the session
      * during the authentication process.
      */
     protected final void clearAuthenticationAttributes(final HttpServletRequest request) {

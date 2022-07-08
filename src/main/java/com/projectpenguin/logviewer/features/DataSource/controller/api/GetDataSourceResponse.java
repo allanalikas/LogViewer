@@ -1,8 +1,8 @@
-package com.projectpenguin.logviewer.DataSource.controller.api;
+package com.projectpenguin.logviewer.features.DataSource.controller.api;
 
 import java.util.List;
 
-import com.projectpenguin.logviewer.DataSource.model.DataSource;
+import com.projectpenguin.logviewer.features.DataSource.model.DataSource;
 
 public class GetDataSourceResponse {
 
@@ -20,5 +20,4 @@ public class GetDataSourceResponse {
         this.dataSources = dataSources;
     }
 
-    
 }

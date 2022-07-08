@@ -26,7 +26,6 @@ import org.springframework.boot.actuate.trace.http.HttpTrace;
 import org.springframework.boot.actuate.trace.http.HttpTraceRepository;
 import org.springframework.boot.actuate.trace.http.InMemoryHttpTraceRepository;
 
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -35,16 +34,21 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 public class LDAPSecurityConfiguration {
 
     // @Bean
-    // PasswordComparisonAuthenticator authenticator(BaseLdapPathContextSource contextSource) {
-    //     PasswordComparisonAuthenticator authenticator = new PasswordComparisonAuthenticator(contextSource);
-    //     authenticator.setUserSearch(new FilterBasedLdapUserSearch("ou=people,dc=springframework,dc=org", "(uid={0})", contextSource));
-    //     authenticator.setUserDnPatterns(new String[] { "uid={0},ou=people" });
-    //     return authenticator;
+    // PasswordComparisonAuthenticator authenticator(BaseLdapPathContextSource
+    // contextSource) {
+    // PasswordComparisonAuthenticator authenticator = new
+    // PasswordComparisonAuthenticator(contextSource);
+    // authenticator.setUserSearch(new
+    // FilterBasedLdapUserSearch("ou=people,dc=springframework,dc=org", "(uid={0})",
+    // contextSource));
+    // authenticator.setUserDnPatterns(new String[] { "uid={0},ou=people" });
+    // return authenticator;
     // }
 
     // @Bean
-    // LdapAuthenticationProvider authenticationProvider(LdapAuthenticator authenticator) {
-    //     return new LdapAuthenticationProvider(authenticator);
+    // LdapAuthenticationProvider authenticationProvider(LdapAuthenticator
+    // authenticator) {
+    // return new LdapAuthenticationProvider(authenticator);
     // }
 
     @Bean
@@ -54,16 +58,19 @@ public class LDAPSecurityConfiguration {
         factory.setUserSearchBase("ou=people,dc=springframework,dc=org");
         factory.setUserSearchFilter("(uid={0})");
         factory.setUserDnPatterns("uid={0},ou=people");
-        factory.setPasswordAttribute("userPassword");  
+        factory.setPasswordAttribute("userPassword");
         return factory.createAuthenticationManager();
     }
 
     // @Bean
-    // AuthenticationManager authenticationManager(BaseLdapPathContextSource contextSource) {
-    //     LdapBindAuthenticationManagerFactory factory = new LdapBindAuthenticationManagerFactory(contextSource, new BCryptPasswordEncoder());
-    //     factory.setUserSearchFilter("(uid={0})");
-    //     factory.setUserSearchBase("ou=people");
-    //     return factory.createAuthenticationManager();
+    // AuthenticationManager authenticationManager(BaseLdapPathContextSource
+    // contextSource) {
+    // LdapBindAuthenticationManagerFactory factory = new
+    // LdapBindAuthenticationManagerFactory(contextSource, new
+    // BCryptPasswordEncoder());
+    // factory.setUserSearchFilter("(uid={0})");
+    // factory.setUserSearchBase("ou=people");
+    // return factory.createAuthenticationManager();
     // }
 
 }

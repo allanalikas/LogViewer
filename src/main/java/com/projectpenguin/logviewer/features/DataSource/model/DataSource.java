@@ -1,4 +1,4 @@
-package com.projectpenguin.logviewer.DataSource.model;
+package com.projectpenguin.logviewer.features.DataSource.model;
 
 import java.sql.Date;
 
@@ -35,11 +35,11 @@ public class DataSource {
     @Column(name = "dateRemoved")
     private Date dateRemoved;
 
-
     public DataSource() {
     }
 
-    public DataSource(long id, String filePath, String description, boolean isActive, Date dateAdded, Date dateModified, Date dateRemoved) {
+    public DataSource(long id, String filePath, String description, boolean isActive, Date dateAdded, Date dateModified,
+            Date dateRemoved) {
         this.id = id;
         this.filePath = filePath;
         this.description = description;
@@ -112,14 +112,14 @@ public class DataSource {
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", filePath='" + getFilePath() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", isActive='" + isIsActive() + "'" +
-            ", dateAdded='" + getDateAdded() + "'" +
-            ", dateModified='" + getDateModified() + "'" +
-            ", dateRemoved='" + getDateRemoved() + "'" +
-            "}";
+                " id='" + getId() + "'" +
+                ", filePath='" + getFilePath() + "'" +
+                ", description='" + getDescription() + "'" +
+                ", isActive='" + isIsActive() + "'" +
+                ", dateAdded='" + getDateAdded() + "'" +
+                ", dateModified='" + getDateModified() + "'" +
+                ", dateRemoved='" + getDateRemoved() + "'" +
+                "}";
     }
 
 }

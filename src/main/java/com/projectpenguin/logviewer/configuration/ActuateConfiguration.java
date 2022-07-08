@@ -14,7 +14,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 @Configuration
 public class ActuateConfiguration {
-    @Bean
+	@Bean
 	public HttpTraceRepository httpTraceRepository() {
 		return new InMemoryHttpTraceRepository() {
 			ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());

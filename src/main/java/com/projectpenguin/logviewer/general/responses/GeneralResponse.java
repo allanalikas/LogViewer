@@ -7,7 +7,6 @@ public class GeneralResponse extends AbstractResponse {
     private ErrorCode errorCode;
     private String message;
 
-
     public GeneralResponse(ErrorCode errorCode, String message) {
         this.errorCode = errorCode;
         this.message = message;

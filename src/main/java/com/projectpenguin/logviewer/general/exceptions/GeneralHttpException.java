@@ -11,11 +11,11 @@ public class GeneralHttpException extends Exception {
     private ErrorCode errorCode;
     private String message;
 
-    public GeneralHttpException( ErrorCode errorCode, String message ) {
+    public GeneralHttpException(ErrorCode errorCode, String message) {
         this(HttpStatus.OK, errorCode, message);
     }
 
-    public GeneralHttpException(HttpStatus httpStatus, ErrorCode errorCode, String message ) {
+    public GeneralHttpException(HttpStatus httpStatus, ErrorCode errorCode, String message) {
         super(message);
         this.httpStatus = httpStatus;
         this.errorCode = errorCode;
