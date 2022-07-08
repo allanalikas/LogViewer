@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -29,13 +30,26 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function Login() {
+  const navigate = useNavigate()
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    fetch("/api/login", {
+      method: "POST",
+      body: data
+    })
+    .then((response) => {
+      if(response.status === 200) {
+        navigate("/")
+      }
+      navigate("/login?error")
+    })
+    .catch((err) => {
+      navigate("/login")
+     });
   };
 
   return (
@@ -61,10 +75,10 @@ export default function Login() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="username Address"
+              name="username"
+              autoComplete="username"
               autoFocus
             />
             <TextField

@@ -24,6 +24,7 @@ services:
       - 3001:3000
     environment:
       - NODE_ENV=production
+      - WDS_SOCKET_PORT=0
     networks:
       - logviewer_network
 
@@ -33,7 +34,7 @@ services:
       context : .
       dockerfile: Dockerfile
     ports:
-      - "8081:8080"
+      - "8443:8443"
     depends_on:
       postgresql:
         condition: service_healthy
