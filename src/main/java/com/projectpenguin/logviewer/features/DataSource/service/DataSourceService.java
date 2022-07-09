@@ -18,4 +18,8 @@ public class DataSourceService {
         return dataSourceRepository.findAll();
     }
 
+    public DataSource saveDataSource( DataSource dataSource ) {
+        return dataSourceRepository.save( dataSource );
+    }
+
 }

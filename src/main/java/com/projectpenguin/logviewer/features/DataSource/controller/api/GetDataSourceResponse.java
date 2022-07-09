@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.projectpenguin.logviewer.features.DataSource.model.DataSource;
 
-public class GetDataSourceResponse {
+public class GetDataSourceResponse {    
 
     private List<DataSource> dataSources;
 

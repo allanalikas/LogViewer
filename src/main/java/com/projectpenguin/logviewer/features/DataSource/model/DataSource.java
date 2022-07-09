@@ -1,6 +1,8 @@
 package com.projectpenguin.logviewer.features.DataSource.model;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +17,10 @@ public class DataSource {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private UUID id;
+
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "filePath")
     private String filePath;
@@ -27,33 +32,34 @@ public class DataSource {
     private boolean isActive;
 
     @Column(name = "dateAdded")
-    private Date dateAdded;
+    private LocalDateTime dateAdded;
 
     @Column(name = "dateModified")
-    private Date dateModified;
+    private LocalDateTime dateModified;
 
     @Column(name = "dateRemoved")
-    private Date dateRemoved;
+    private LocalDateTime dateRemoved;
 
     public DataSource() {
     }
 
-    public DataSource(long id, String filePath, String description, boolean isActive, Date dateAdded, Date dateModified,
-            Date dateRemoved) {
+    public DataSource(UUID id, String username, String filePath, String description, boolean isActive, LocalDateTime localDateTime, LocalDateTime localDateTime2,
+        LocalDateTime dateRemoved) {
         this.id = id;
+        this.username = username;
         this.filePath = filePath;
         this.description = description;
         this.isActive = isActive;
-        this.dateAdded = dateAdded;
-        this.dateModified = dateModified;
+        this.dateAdded = localDateTime;
+        this.dateModified = localDateTime2;
         this.dateRemoved = dateRemoved;
     }
 
-    public long getId() {
+    public UUID getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -85,41 +91,52 @@ public class DataSource {
         this.isActive = isActive;
     }
 
-    public Date getDateAdded() {
+    public LocalDateTime getDateAdded() {
         return this.dateAdded;
     }
 
-    public void setDateAdded(Date dateAdded) {
+    public void setDateAdded(LocalDateTime dateAdded) {
         this.dateAdded = dateAdded;
     }
 
-    public Date getDateModified() {
+    public LocalDateTime getDateModified() {
         return this.dateModified;
     }
 
-    public void setDateModified(Date dateModified) {
+    public void setDateModified(LocalDateTime dateModified) {
         this.dateModified = dateModified;
     }
 
-    public Date getDateRemoved() {
+    public LocalDateTime getDateRemoved() {
         return this.dateRemoved;
     }
 
-    public void setDateRemoved(Date dateRemoved) {
+    public void setDateRemoved(LocalDateTime dateRemoved) {
         this.dateRemoved = dateRemoved;
     }
+
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
 
     @Override
     public String toString() {
         return "{" +
-                " id='" + getId() + "'" +
-                ", filePath='" + getFilePath() + "'" +
-                ", description='" + getDescription() + "'" +
-                ", isActive='" + isIsActive() + "'" +
-                ", dateAdded='" + getDateAdded() + "'" +
-                ", dateModified='" + getDateModified() + "'" +
-                ", dateRemoved='" + getDateRemoved() + "'" +
-                "}";
-    }
+            " id='" + getId() + "'" +
+            ", username='" + getUsername() + "'" +
+            ", filePath='" + getFilePath() + "'" +
+            ", description='" + getDescription() + "'" +
+            ", isActive='" + isIsActive() + "'" +
+            ", dateAdded='" + getDateAdded() + "'" +
+            ", dateModified='" + getDateModified() + "'" +
+            ", dateRemoved='" + getDateRemoved() + "'" +
+            "}";
+    }    
 
 }
