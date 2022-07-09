@@ -1,0 +1,5 @@
+2022-07-08 23:30:37.641  INFO 18532 --- [  restartedMain] c.p.logviewer.LogviewerApplication       : Starting LogviewerApplication using Java 13.0.2 on DESKTOP-G3PGASB with PID 18532 (C:\LocalDev\ProjectLogViewer\logviewerproject\LogViewer\target\classes started by Allan in C:\LocalDev\ProjectLogViewer\logviewerproject\LogViewer)
+2022-07-08 23:30:37.642  INFO 18532 --- [  restartedMain] c.p.logviewer.LogviewerApplication       : No active profile set, falling back to 1 default profile: "default"
+2022-07-08 23:30:37.689  INFO 18532 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-07-08 23:30:37.690  INFO 18532 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-07-08 23:30:38.564  INFO 18532 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode

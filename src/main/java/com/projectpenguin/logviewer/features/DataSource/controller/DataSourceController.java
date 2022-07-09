@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.unix4j.Unix4j;
+import org.unix4j.line.Line;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.projectpenguin.logviewer.features.DataSource.service.DataSourceService;
 import com.projectpenguin.logviewer.general.errors.ErrorCode;
@@ -35,6 +41,29 @@ public class DataSourceController {
             // GetDataSourceResponse(dataSourceService.getDataSources());
             // return new ResponseEntity<>(response, HttpStatus.OK);
             // return ResponseEntity.ok().body( response );
+        } catch (GeneralHttpException exception) {
+            return exception.createErrorResponse();
+        }
+    }
+
+    @GetMapping(value = "/datasource")
+    public ResponseEntity getDataSource(@RequestParam String filePath, @RequestParam String searchCommand) {
+        try {
+            // TODO: Auth and User specific checks
+
+            List<Line> result = new ArrayList<>();
+
+            try {
+                File file = new File(filePath);
+                result = Unix4j.grep(searchCommand, file).toLineList();
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                System.out.println(e.getMessage());
+                throw new GeneralHttpException(HttpStatus.BAD_REQUEST, ErrorCode.INVALID,
+                        "Bad Request.");
+            }
+
+            return ResponseEntity.ok().body(result);
         } catch (GeneralHttpException exception) {
             return exception.createErrorResponse();
         }
