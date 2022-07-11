@@ -14,12 +14,12 @@ public class DataSourceService {
     @Autowired
     DataSourceRepository dataSourceRepository;
 
-    public List<DataSource> getDataSources() {
-        return dataSourceRepository.findAll();
+    public List<DataSource> getDataSources(String username) {
+        return dataSourceRepository.findByUsername(username);
     }
 
-    public DataSource saveDataSource( DataSource dataSource ) {
-        return dataSourceRepository.save( dataSource );
+    public DataSource saveDataSource(DataSource dataSource) {
+        return dataSourceRepository.save(dataSource);
     }
 
 }

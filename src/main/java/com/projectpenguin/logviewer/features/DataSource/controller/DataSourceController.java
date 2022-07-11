@@ -46,7 +46,7 @@ public class DataSourceController {
                         "Request not authorized.");
             }
 
-            GetDataSourceResponse response = new GetDataSourceResponse(dataSourceService.getDataSources());
+            GetDataSourceResponse response = new GetDataSourceResponse(dataSourceService.getDataSources( auth.getName() ));
             return ResponseEntity.ok().body(response);
 
         } catch (GeneralHttpException exception) {
