@@ -1,5 +1,6 @@
 import { Box, Tab, Tabs, TextField, Typography } from '@mui/material';
 import * as React from 'react';
+import { UserContext } from '../../context/user-context';
 import LogSource from './LogSource';
 import "./LogView.css"
 
@@ -79,6 +80,11 @@ export default function LogView() {
 
   return (
     <div className='main-div'>
+        <UserContext.Consumer>
+          {({username}) => (
+            <h1>{username}</h1>
+          )}
+        </UserContext.Consumer>
         <div className='logview-div'>
           <div className='multi-query-container'>
             <TextField fullWidth sx={{ m: 1 }}

@@ -1,24 +1,21 @@
-import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
+import Navbar from './components/navigation/Navbar';
+import SpaRoutes from './components/navigation/spa-routes';
+import { User, UserContext } from './context/user-context';
 
-function App() {
+export default function App() {
+
+  const user = new User("asda", false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <UserContext.Provider value={user}>
+          <BrowserRouter>
+            <Navbar />
+            <SpaRoutes />
+          </BrowserRouter>
+        </UserContext.Provider>
+      </div>
   );
 }
-
-export default App;
